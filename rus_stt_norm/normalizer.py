@@ -3,13 +3,17 @@ import torch
 from string import printable, punctuation
 from tqdm import tqdm
 import warnings
+import importlib.resources as pkg_resources
 
 
 class Normalizer:
     def __init__(self,
                  device='cpu',
-                 jit_model='jit_s2s.pt'):
+                 jit_model=None):
         super(Normalizer, self).__init__()
+
+        if jit_model is None:
+            jit_model = pkg_resources.open_binary('rus_stt_norm', 'jit_s2s.pt')
 
         self.device = torch.device(device)
 

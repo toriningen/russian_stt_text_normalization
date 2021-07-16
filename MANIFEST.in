@@ -1,0 +1,2 @@
+include LICENSE README.md
+include rus_stt_norm/jit_s2s.pt
